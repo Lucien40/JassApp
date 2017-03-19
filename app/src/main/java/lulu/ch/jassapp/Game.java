@@ -98,6 +98,7 @@ class Game {
 
     void randomDistribute() {
         //Comment
+        //This is a change in Gui
 
     }
 
