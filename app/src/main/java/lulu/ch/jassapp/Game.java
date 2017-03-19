@@ -97,7 +97,7 @@ class Game {
     }
 
     void randomDistribute() {
-
+        //Comment
 
     }
 
