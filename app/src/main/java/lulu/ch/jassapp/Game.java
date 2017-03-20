@@ -103,7 +103,7 @@ class Game {
         setFirstPlayer(players.get(0));
         ArrayList<Card> tempCards = cards.getCards();
         Random random = new Random();
-        for (int i = cards.getCards().size() - 1; i > 0; i--) {
+        for (int i = cards.getCards().size() - 1; i >= 0; i--) {
             int randomIndex = random.nextInt(i + 1);
             distribute(getPlayer(i % 4), tempCards.get(randomIndex));
             tempCards.remove(tempCards.get(randomIndex));

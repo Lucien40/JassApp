@@ -1,6 +1,12 @@
 package lulu.ch.jassapp;
 
+import android.util.Log;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,6 +18,9 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Log.class)
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
@@ -20,6 +29,7 @@ public class ExampleUnitTest {
 
     @Test
     public void distribute() {
+        PowerMockito.mockStatic(Log.class);
 
         ArrayList<String> playerNames1 = new ArrayList<>();
         playerNames1.add("Player1");
@@ -32,10 +42,10 @@ public class ExampleUnitTest {
         Game newGame = new Game(playerNames1, team1Name, playerNames2, team2Name, Calendar.getInstance().getTime());
 
         newGame.randomDistribute();
-        System.out.print(newGame.getPlayer(1).getHand().size());
-
-
+        System.out.print(newGame.getPlayer(0).getHand().size() + "" + newGame.getPlayer(1).getHand().size() + "" + newGame.getPlayer(2).getHand().size() + "" + newGame.getPlayer(3).getHand().size());
 
 
     }
+
+
 }
