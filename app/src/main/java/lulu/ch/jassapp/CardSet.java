@@ -11,33 +11,28 @@ import java.util.HashMap;
 
 class CardSet {
 
-    HashMap<String, Card> cardMap = new HashMap<>();
-    ArrayList<Card> cards = new ArrayList<>();
-    String[] color = {"h", "d", "s", "c"};
-    String[] name = {"a", "k", "q", "j", "1", "9", "8", "7", "6"};
+    private HashMap<String, Card> cardMap = new HashMap<>();
+    private ArrayList<Card> cards = new ArrayList<>();
+    private static final String[] color = {"h", "d", "s", "c"};
+    private static final String[] name = {"a", "k", "q", "j", "1", "9", "8", "7", "6"};
 
-    String leadColor;
-    String trumpColor;
-    int[] power = {9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int[] points = {11, 4, 3, 2, 10, 0, 0, 0, 0};
-    int[] trumpPower = {29, 28, 27, 39, 26, 38, 25, 24, 23};
-    int[] trumpPoint = {11, 4, 3, 20, 10, 14, 0, 0, 0};
+    private String leadColor;
+    private String trumpColor;
+    private static final int[] power = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+    private static final int[] points = {11, 4, 3, 2, 10, 0, 0, 0, 0};
+    private static final int[] trumpPower = {29, 28, 27, 39, 26, 38, 25, 24, 23};
+    private static final int[] trumpPoint = {11, 4, 3, 20, 10, 14, 0, 0, 0};
 
     CardSet() {
         setCardMap();
     }
 
-    public String getColor(int color) {
-        return this.color[color];
-    }
-
-
     private void setCardMap() {
         for (int i = 0; i < name.length; i++) {
-            for (int j = 0; j < color.length; j++) {
-                String cardName = name[i] + " of " + color[j];
+            for (String aColor : color) {
+                String cardName = name[i] + " of " + aColor;
                 Card c = new Card(cardName);
-                c.setColor(color[j]);
+                c.setColor(aColor);
                 c.setPoint(points[i]);
                 c.setPower(power[i]);
                 c.setName(name[i]);
@@ -55,6 +50,9 @@ class CardSet {
     }
 
     public void reSetCardMap() {
+
+        cardMap.clear();
+        cards.clear();
         setCardMap();
     }
 

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by huber on 18-Mar-17.
@@ -99,6 +100,14 @@ class Game {
     void randomDistribute() {
         //Comment
         //This is a change in analysis
+        setFirstPlayer(players.get(0));
+        ArrayList<Card> tempCards = cards.getCards();
+        Random random = new Random();
+        for (int i = cards.getCards().size() - 1; i > 0; i--) {
+            int randomIndex = random.nextInt(i + 1);
+            distribute(getPlayer(i % 4), tempCards.get(randomIndex));
+            tempCards.remove(tempCards.get(randomIndex));
+        }
 
     }
 
@@ -167,10 +176,13 @@ class Game {
 
     public void setFirstPlayer(Player player) {
         firstPlayer = player;
+        relativeFirstPlayer = firstPlayer;
+        relativeSecondPlayer = getPlayerFromOrder((firstPlayer.getOrder() + 1) % 4);
+        relativeThirdPlayer = getPlayerFromOrder((firstPlayer.getOrder() + 2) % 4);
+        relativeFourthPlayer = getPlayerFromOrder((firstPlayer.getOrder() + 3) % 4);
         getPlayerFromOrder((firstPlayer.getOrder() + 3) % 4).setDealer(true);
         //Start a new Match
-        Match startMatch = new Match(firstPlayer, players, teams, cards);
-        currentMatch = startMatch;
+        currentMatch = new Match(firstPlayer, players, teams, cards);
 
     }
 

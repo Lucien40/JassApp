@@ -55,7 +55,7 @@ public class Match {
         }
         this.team1 = teams.get(0);
         this.team2 = teams.get(1);
-        Log.i("New Match Started", "Next Player.\n  " + mNextPlayer.getName() + " order: " + mNextPlayer.getOrder());
+        //Log.i("New Match Started", "Next Player.\n  " + mNextPlayer.getName() + " order: " + mNextPlayer.getOrder());
     }
 
     public boolean playCard(String card) {
@@ -153,7 +153,7 @@ public class Match {
         for (Player player : players) {
             player.clearHand();
         }
-        for (Card card : matchCardSet.cards) {
+        for (Card card : matchCardSet.getCards()) {
             card.isDistributed = false;
         }
     }

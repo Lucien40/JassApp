@@ -89,7 +89,7 @@ public class Player {
     public void addCardToHand(Card card) {
         hand.add(card);
         currentHand.add(card);
-        Log.i("Player" + name, "Added card to hand:" + card.getName() + "size of hand:" + hand.size());
+        //Log.i("Player" + name, "Added card to hand:" + card.getName() + "size of hand:" + hand.size());
     }
 
     public void clearHand() {
@@ -98,7 +98,7 @@ public class Player {
     }
 
     public void setCardSet(CardSet cardSet) {
-        Log.i("SEttinng the cardset", "HI");
+        //Log.i("SEttinng the cardset", "HI");
         this.cardSet = cardSet;
         possibleCard = cardSet.getCards();
     }
